@@ -11,6 +11,7 @@ public class Career
     int id;
     String name;
     Date year;
+    String fillable[] = new String[]{"id","name","year"};
 
     public Career(int id, String name, Date year) 
     {
