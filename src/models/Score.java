@@ -1,5 +1,7 @@
 package models;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author guss
@@ -11,7 +13,20 @@ public class Score
     int teacher_id;
     int opportunity;
     float score;
-    String fillable[] = new String[]{"student_id","subject_id","teacher_id","oportunity","score"};
+    ArrayList<String> fillable = new ArrayList<String>()
+    {{
+        add("alumno_id");
+        add("materia_id");
+        add("maestro_id");
+        add("oportunidad");
+        add("calificacion");
+    }};
+
+    public Score()
+    {
+        this.student_id = -1;
+    }
+
     public Score(int student_id, int subject_id, int teacher_id, int opportunity, float score)
     {
         this.student_id = student_id;
@@ -70,6 +85,18 @@ public class Score
     {
         this.score = score;
     }
+
+    public ArrayList<String> getFillable()
+    {
+        return fillable;
+    }
+
+    public void setFillable(ArrayList<String> fillable)
+    {
+        this.fillable = fillable;
+    }
+    
+    
     
     
     

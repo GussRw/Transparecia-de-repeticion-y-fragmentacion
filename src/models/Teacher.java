@@ -1,5 +1,7 @@
 package models;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author guss
@@ -11,8 +13,30 @@ public class Teacher
     String first_lastname;
     String second_lastname;
     String academic_degree;
-    String fillable[] = new String[]{"id","name","first_lastname","second_lastname","academic_degree"};
+
+    public Teacher()
+    {
+        this.id = -1;
+    }
+
+    public ArrayList<String> getFillable()
+    {
+        return fillable;
+    }
+
+    public void setFillable(ArrayList<String> fillable)
+    {
+        this.fillable = fillable;
+    }
     
+    ArrayList<String> fillable = new ArrayList<String>()
+    {{
+        add("id");
+        add("nombre");
+        add("apellido_paterno");
+        add("apellido_materno");
+        add("titulo");
+    }};
     public Teacher(int id, String name, String first_lastname, String second_lastname, String academic_degree)
     {
         this.id = id;

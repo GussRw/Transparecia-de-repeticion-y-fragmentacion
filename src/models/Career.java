@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -11,13 +12,33 @@ public class Career
     int id;
     String name;
     Date year;
-    String fillable[] = new String[]{"id","name","year"};
+    ArrayList<String> fillable = new ArrayList<String>()
+    {{
+        add("id");
+        add("nombre");
+        add("año");
+    }};
+
+    public ArrayList<String> getFillable()
+    {
+        return fillable;
+    }
+
+    public void setFillable(ArrayList<String> fillable)
+    {
+        this.fillable = fillable;
+    }
 
     public Career(int id, String name, Date year) 
     {
         this.id = id;
         this.name = name;
         this.year = year;
+    }
+
+    public Career()
+    {
+        this.id = -1;
     }
 
     public int getId() 

@@ -61,6 +61,7 @@ public class SelectTables extends javax.swing.JPanel
                         selectTablesPanel.revalidate();
                         selectTablesPanel.repaint();
                     }
+                    enableNextPanel();
                 }
             });
         }
@@ -77,22 +78,20 @@ public class SelectTables extends javax.swing.JPanel
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         selectedTablesPanel = new javax.swing.JPanel();
         selectTablesPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        nextPanel = new javax.swing.JButton();
 
+        setAlignmentX(0.0F);
         setMaximumSize(new java.awt.Dimension(700, 300));
         setMinimumSize(new java.awt.Dimension(700, 300));
-        addPropertyChangeListener(new java.beans.PropertyChangeListener()
-        {
-            public void propertyChange(java.beans.PropertyChangeEvent evt)
-            {
+        addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 formPropertyChange(evt);
             }
         });
@@ -135,21 +134,20 @@ public class SelectTables extends javax.swing.JPanel
         jLabel2.setFont(new java.awt.Font("Noto Sans", 1, 14)); // NOI18N
         jLabel2.setText("Tablas Seleccionadas: ");
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back.png"))); // NOI18N
         jButton2.setText("Cancelar");
-        jButton2.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Siguiente");
-        jButton1.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                jButton1ActionPerformed(evt);
+        nextPanel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/next.png"))); // NOI18N
+        nextPanel.setText("Siguiente");
+        nextPanel.setEnabled(false);
+        nextPanel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextPanelActionPerformed(evt);
             }
         });
 
@@ -158,10 +156,10 @@ public class SelectTables extends javax.swing.JPanel
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(531, Short.MAX_VALUE)
+                .addContainerGap(447, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
+                .addComponent(nextPanel)
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -179,9 +177,9 @@ public class SelectTables extends javax.swing.JPanel
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(253, Short.MAX_VALUE)
+                .addContainerGap(254, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(nextPanel)
                     .addComponent(jButton2))
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,8 +201,8 @@ public class SelectTables extends javax.swing.JPanel
         ((JDialog) this.getRootPane().getParent()).dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
-    {//GEN-HEADEREND:event_jButton1ActionPerformed
+    private void nextPanelActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_nextPanelActionPerformed
+    {//GEN-HEADEREND:event_nextPanelActionPerformed
         CreateQuery.selectedTables.removeAll(CreateQuery.selectedTables);
         for (JButton button: tables)
         {
@@ -217,9 +215,9 @@ public class SelectTables extends javax.swing.JPanel
         CreateQuery.mainPanel.add(CreateQuery.selectColumns);
         CreateQuery.mainPanel.revalidate();
         CreateQuery.mainPanel.repaint();
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_nextPanelActionPerformed
 
+    
     private void formPropertyChange(java.beans.PropertyChangeEvent evt)//GEN-FIRST:event_formPropertyChange
     {//GEN-HEADEREND:event_formPropertyChange
         ((JDialog) this.getRootPane().getParent()).setTitle("Seleccionar Tablas");
@@ -236,12 +234,27 @@ public class SelectTables extends javax.swing.JPanel
         }
     }//GEN-LAST:event_formPropertyChange
 
-
+    public void enableNextPanel()
+    {
+        int cont = 0;
+        for (JButton button: tables)
+        {
+            if (button.getParent().equals(selectedTablesPanel))
+               cont++;
+        }
+        if (cont>0)
+            nextPanel.setEnabled(true);
+        else
+            nextPanel.setEnabled(false);
+            
+        
+        
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton nextPanel;
     public javax.swing.JPanel selectTablesPanel;
     public javax.swing.JPanel selectedTablesPanel;
     // End of variables declaration//GEN-END:variables
