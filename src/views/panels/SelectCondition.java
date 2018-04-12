@@ -3,6 +3,7 @@ package views.panels;
 
 import java.util.ArrayList;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import models.Location;
 import models.Table;
 import models.TableLocation;
@@ -34,7 +35,6 @@ public class SelectCondition extends javax.swing.JPanel
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         tablesBox = new javax.swing.JComboBox<>();
         columnBox = new javax.swing.JComboBox<>();
@@ -60,15 +60,6 @@ public class SelectCondition extends javax.swing.JPanel
         jPanel1.setMinimumSize(new java.awt.Dimension(700, 300));
         jPanel1.setPreferredSize(new java.awt.Dimension(700, 300));
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/back.png"))); // NOI18N
-        jButton2.setText("Atras");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/ok.png"))); // NOI18N
         jButton1.setText("Finalizar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,8 +120,6 @@ public class SelectCondition extends javax.swing.JPanel
                 .addContainerGap(83, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addContainerGap())
         );
@@ -156,10 +145,8 @@ public class SelectCondition extends javax.swing.JPanel
                         .addComponent(jLabel4)
                         .addGap(6, 6, 6)
                         .addComponent(conditionBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addComponent(jButton1)
                 .addContainerGap())
         );
 
@@ -180,13 +167,6 @@ public class SelectCondition extends javax.swing.JPanel
                     .addContainerGap()))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        CreateQuery.mainPanel.removeAll();
-        CreateQuery.mainPanel.add(CreateQuery.selectColumns);
-        CreateQuery.mainPanel.revalidate();
-        CreateQuery.mainPanel.repaint();
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void tablesBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_tablesBoxItemStateChanged
         columnBox.removeAllItems();
@@ -325,9 +305,10 @@ public class SelectCondition extends javax.swing.JPanel
             }
             Main.showResult(tableLocation);
             ((JDialog) this.getRootPane().getParent()).dispose();
-        }else
-            System.out.println("No se puede completar la consulta");
-        
+        }else{
+                JOptionPane.showMessageDialog(null, "No se puede completar la consulta");
+                ((JDialog) this.getRootPane().getParent()).dispose();
+        }
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -339,7 +320,6 @@ public class SelectCondition extends javax.swing.JPanel
     public static javax.swing.JComboBox<String> conditionBox;
     public static javax.swing.JTextField conditionText;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
